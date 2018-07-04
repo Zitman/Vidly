@@ -47,6 +47,8 @@ namespace Vidly.ViewModels
         public MovieFormViewModel()
         {
             Id = 0;
+            ReleaseDate = DateTime.MinValue;
+            NumberInStock = 0;
         }
     }
 }

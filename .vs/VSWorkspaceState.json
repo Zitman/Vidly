@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Vidly",
-    "\\Vidly\\Models"
+    "\\Vidly\\Models",
+    "\\Vidly\\ViewModels"
   ],
+  "SelectedNode": "\\Vidly",
   "PreviewInSolutionExplorer": false
 }
