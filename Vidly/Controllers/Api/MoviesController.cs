@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,9 +22,7 @@ namespace Vidly.Controllers.Api
         // GET /api/movies
         public IEnumerable<MovieDto> GetMovies()
         {
-            return _context.Movies
-                .Include(mbox => mbox.Genre)
-                .ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
         }
 
         // GET /api/movies/1
@@ -64,7 +61,7 @@ namespace Vidly.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
 
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
             if (movieInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
@@ -75,9 +72,9 @@ namespace Vidly.Controllers.Api
 
         //DELETE /api/movies/1
         [HttpDelete]
-        public void DeleteMovie(int id)
+        public void DeleteCustomer(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
             if (movieInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
