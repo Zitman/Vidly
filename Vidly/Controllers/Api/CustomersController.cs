@@ -9,7 +9,7 @@ using Vidly.Models;
 using Vidly.Dtos;
 using AutoMapper;
 
-namespace Vidly.Controllers.Api
+namespace Vidly.Controllers.Api // Comment
 {
     public class CustomersController : ApiController
     {
