@@ -52,8 +52,8 @@
                     },
                     {
                         data: "Id",
-                        render: function(data) {
-                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        render: function(data, type, customer) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + " data-customer-name='" + customer.Name + "'>Delete</button>";
                         }
                     }
                 ]
@@ -62,7 +62,7 @@
             ".js-delete",
             function() {
                 var button = $(this);
-                bootbox.confirm("Are you sure you want to delete this customer?",
+                bootbox.confirm("Are you sure you want to delete " + button.attr("data-customer-name") + "?",
                     function(result) {
                         if (result) {
                             $.ajax({
