@@ -28,5 +28,7 @@ namespace Vidly.Models
         [Required(ErrorMessage = "The number in stock must be between 1 and 20.")]
         [Range(1, 20)]
         public byte NumberInStock { get; set; }
+
+        public byte NumberAvailable { get; set; }
     }
 }

@@ -50,6 +50,8 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
+            movieDto.NumberAvailable = movieDto.NumberInStock;
+
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
 
             _context.Movies.Add(movie);
@@ -82,7 +84,7 @@ namespace Vidly.Controllers.Api
         //DELETE /api/movies/1
         [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpDelete]
-        public IHttpActionResult DeleteCustomer(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
             if (movieInDb == null)
